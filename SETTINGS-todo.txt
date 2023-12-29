@@ -1,0 +1,26 @@
+OPTIONS
+
+purple_account_get_int(sa->account, "ratelimit_delay", 15
+purple_account_get_bool(sa->account, "open_chat", FALSE)
+purple_account_get_bool(sa->account, "lazy_load", FALSE);
+
+/* TODO */
+purple_account_get_string(account, "api_token", NULL);
+
+purple_account_get_bool(sa->account, "channel_members", TRUE)
+purple_account_get_bool(sa->account, "open_history", FALSE)
+purple_account_get_bool(sa->account, "connect_history", FALSE);
+purple_account_get_bool(sa->account, "display_threads", TRUE);
+purple_account_get_bool(sa->account, "thread_history", FALSE)
+purple_account_get_bool(sa->account, "expand_urls", TRUE)
+purple_account_get_string(sa->account, "attachment_prefix", "▎ ")
+purple_account_get_bool(sa->account, "display_parent_indicator", TRUE)
+purple_account_get_string(sa->account, "thread_indicator", "⤷ ")
+purple_account_get_string(sa->account, "parent_indicator", "◈ ")
+purple_account_get_string(sa->account, "thread_timestamp", "%X");
+purple_account_get_string(sa->account, "thread_datestamp", "%x %X");
+
+
+purple_account_get_username(account);
+purple_account_get_password(sa->account);
+
