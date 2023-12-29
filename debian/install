@@ -1,0 +1,2 @@
+/usr/lib/*/libaccounts-plugins/*.so
+/usr/lib/*/libaccounts-plugins/xml/*.glade

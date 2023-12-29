@@ -1,0 +1,2007 @@
+2008-09-15  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c: (page_async_cb), (sort_func),
+	(accounts_wizard_dialog_destroy):
+	Plug some memory leaks
+
+2008-08-07  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* configure.ac:
+	Read profiles_dir from libmcclient.pc
+
+=== osso-accounts 3.77 ===
+
+2008-08-07  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/gtalk-plugin.h:
+	* plugins/jabber-plugin.h:
+	* plugins/sip-plugin.h:
+	Include mc-profile.h from libmcclient rather than libmissioncontrol
+
+=== osso-accounts 3.76 ===
+
+2008-08-04  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-service.c:
+	(on_cm_got_info):
+	Do not crash when the protocol list is empty
+	
+	* src/accounts-ui.c: (accounts_ui_init):
+	* src/accounts-wizard-dialog.c: (setup_button),
+	(accounts_wizard_dialog_init):
+	Explicitly show the buttons we pack in the dialog action area,
+	as the area no longer is a child of dialog->vbox's
+
+=== osso-accounts 3.75 ===
+
+2008-07-03  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* src/main.c:
+	Always start up with the accounts list view.
+
+=== osso-accounts 3.74 ===
+
+2008-07-03  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Move casts to another place, just to make GCC happier.
+
+	* libaccounts/Makefile.am, libaccounts/account-item.c,
+	libaccounts/account-plugin-manager.c, libaccounts/account-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-account-item.c,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	Introduce new properties to tell when account plugins have completed
+	their initialization.
+
+2008-07-01  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-plugin-manager.c:
+	Move initialization into the constructor.
+
+=== osso-accounts 3.73 ===
+
+2008-07-01  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-widget.h:
+	Update the type definition macros to match the ones from the new GLib.
+
+=== osso-accounts 3.72 ===
+
+2008-06-26  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* configure.ac, libaccounts/account-item.c,
+	libaccounts/account-service.c, plugins/Makefile.am,
+	plugins/jabber-plugin.c, plugins/libosso-rtcom-accounts/*,
+	plugins/sip-plugin.c:
+	Port the package to use libmcclient.
+
+=== osso-accounts 3.71 ===
+
+2008-04-02  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Fix possible crash when an uninitialized variable could be used.
+
+	* plugins/gtalk-advanced.glade:
+	Add invalid chars for GTalk resource name. Fixes: NB#83189.
+
+=== osso-accounts 3.70 ===
+
+2008-03-19  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Clear the normalized name only if the account name actually changes.
+	Fixes: NB#81030.
+
+2008-03-06  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(run_file_chooser_dialog):
+	Use gtk_file_filter_add_pixbuf_formats() instead of hard-coding
+	supported formats
+
+=== osso-accounts 3.69 ===
+
+2008-02-20  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Check username uniqueness before storing settings. Fixes: NB#80275.
+
+	* plugins/gtalk-advanced.glade, plugins/gtalk-plugin.c,
+	plugins/jabber-advanced.glade, plugins/jabber-plugin.c:
+	Show error banner when chatroom server is left empty. Fixes: NB#80622.
+
+	* plugins/libosso-rtcom-accounts/rtcom-lastpage.c:
+	Make coverity tool a bit happier. Fixes: NB#80893.
+
+2008-02-19  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-widget.c:
+	Make sure the widget that didn't validate is on the active page of a
+	GtkNotebook. Fixes: NB#80580.
+
+	* plugins/sip-plugin.c:
+	Use the advanced settings dialog window as parent for the Hildon
+	banner.
+
+=== osso-accounts 3.68 ===
+
+2008-02-13  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-string.c:
+	(store_settings):
+	Revert a fix that caused bug 80621.
+
+=== osso-accounts 3.67 ===
+
+2008-02-12  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-plugin.c: (on_advanced_clicked):
+	Show errors as banners so user does not need a serial console
+	access to notice them...
+
+=== osso-accounts 3.66 ===
+
+2008-02-07  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/gtalk-existing-account.glade,
+	plugins/jabber-existing-account.glade,
+	plugins/jabber-new-account.glade:
+	Add the semicolon to the list of invalid username characters.
+	Fixes: NB#79814.
+	Also add the hash to the list of invalid username characters.
+
+=== osso-accounts 3.65 ===
+
+2008-02-06  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	Disable the advanced settings dialog while registering a new account.
+	Fixes: NB#79554.
+
+	* plugins/jabber-plugin.c:
+	Correctly get the toplevel window, don't use the RtcomPage.
+
+=== osso-accounts 3.64 ===
+
+2008-02-06  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.c:
+	Set the GError in case the account creation fails.
+
+2008-02-06  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (check_flash_space):
+	Require > 2.0% free space. ~1.5% is reserved for the system.
+	
+	* src/accounts-wizard-dialog.c: (button_clicked_cb):
+	If error is not set, do not try to free it (saves a warning)
+
+2008-02-06  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-advanced.glade:
+	Make the advanced settings windows wider, and shrink the port fields.
+	Fixes: NB#76821.
+
+2008-02-01  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-string.c:
+	Leave empty strings in GConf.
+
+=== osso-accounts 3.63 ===
+
+2008-01-31  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/google-talk.profile:
+	* plugins/jabber.profile:
+	* plugins/sip.profile:
+	Add video-p2p capability to each profile
+
+=== osso-accounts 3.62 ===
+
+2008-01-31  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-displayname.c:
+	Get the default display name from the profile. Fixes: NB#80079.
+
+2008-01-30  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c: (populate_service_store),
+	(sort_func), (accounts_wizard_dialog_constructor):
+	Sort services primarily by priority, secondarily by the
+	service name.
+
+=== osso-accounts 3.61 ===
+
+2008-01-23  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Clear the normalized name when changing the account name.
+	Fixes: NB#79632.
+
+=== osso-accounts 3.60 ===
+
+2008-01-10  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/main.c: (execute):
+	* src/accounts-ui.c: (check_flash_space), (accounts_ui_run_wizard):
+	* src/accounts-ui.h:
+	s/accounts_ui_run_in_wizard_mode/accounts_ui_run_wizard/
+	Set the transiency of the "flash full" info banner correctly
+	(Fixes: NB#79185)
+	
+=== osso-accounts 3.59 ===
+
+2007-11-26  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (construct_tree_view), (accounts_ui_init):
+	Do not set any minimum sizes here. Let the Account column
+	expand, so the other two shrink automatically to their natural
+	size.
+
+	* src/main.c: (execute):
+	Set a minimum size for the Accounts dialog
+
+2007-11-23  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c:
+	Make the accounts dialog wider (Fixes: NB#76906)
+
+2007-11-23  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (construct_tree_view):
+	Make the dialog 2 pixels higher two avoid a bogus
+	scrollbar when there are three accounts.
+	Make 'service' and 'enabled' columns auto-resize.
+
+2007-11-21  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* configure.ac:
+	* debian/rules:
+	Apply a coverage patch from Dmitry
+
+=== osso-accounts 3.58 ===
+
+2007-11-07  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Correctly determines the empty widget in which to move the cursor.
+	Fixes: NB#74869.
+
+=== osso-accounts 3.57 ===
+
+2007-10-17  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	Suffix the temporary avatar with ".bin"
+	Read the avatar mime type from profiles. Default to image/png
+	if the profile does not contain any mime type.
+
+=== osso-accounts 3.56 ===
+
+2007-10-16  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/gtalk-plugin.c, plugins/jabber-plugin.c,
+	plugins/sip-plugin.c:
+	Don't leak the GladeXML objects.
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.c:
+	Given its name, the rtcom_context_take_obj() function should not add a
+	reference to the object.
+
+=== osso-accounts 3.55 ===
+
+2007-10-16  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-plugin.c: (context_init):
+	Make the g_object_weak_ref() conditional, so we don't
+	crash later, if account was not set.
+
+=== osso-accounts 3.54 ===
+
+2007-10-16  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-plugin.c: (on_store_settings), (on_advanced_clicked),
+	(username_page), (context_weak_notify), (context_init):
+	Disconnect "store-settings" signal handler when the edit
+	context is destroyed (Fixes: NB#73090)
+
+2007-10-15  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-advanced.glade:
+	Fix warning: "libglade - unknown child property
+	`fill' for container `HildonCaption'"
+	
+=== osso-accounts 3.53 ===
+
+2007-09-28  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/osso-rtcom-accounts.pc.in:
+	Fix pkg-config file: adding dependencies.
+
+2007-09-25  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* configure.ac, docs/reference/Makefile.am,
+	docs/reference/libosso-rtcom-accounts/*:
+	Generate documentation for libosso-rtcom-accounts.
+
+=== osso-accounts 3.52 ===
+
+2007-09-24  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-page.c:
+	Workaround for the case when Next button is pressed when widgets are
+	not realized. Fixes: NB#70640.
+
+=== osso-accounts 3.51 ===
+
+2007-09-21  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-new-account.glade, plugins/jabber-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-param-string.c:
+	Allow RtcomParamString widgets not to have an associated field; make
+	the verify password widget into a RtcomParamString.
+
+=== osso-accounts 3.50 ===
+
+2007-09-14  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c: (next_insensitive_cb),
+	(setup_button), (accounts_wizard_dialog_init):
+	Do not override plugins' insensitive messages (Fixes: NB#68641)
+
+=== osso-accounts 3.49 ===
+
+2007-09-13  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/gtalk-details.glade:
+	* plugins/jabber-details.glade:
+	* plugins/sip-details.glade:
+	Reduce margin between the avatar image and the "Browse" button
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.h:
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(set_account), (rtcom_avatar_chooser_init),
+	(rtcom_avatar_chooser_clicked), (rtcom_avatar_chooser_class_init):
+	Make the widget a GtkButton, so it's more obvious that it's meant
+	to be clicked. This way it's also consistent with the address book.
+
+	* src/accounts-ui.c:
+	Make the dialog 9 pixels higher
+
+=== osso-accounts 3.48 ===
+
+2007-09-13  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/Makefile.am, plugins/gtalk-plugin.c,
+	plugins/jabber-plugin.c, plugins/sip-plugin.c:
+	Add help button on advanced configuration dialogs.
+
+=== osso-accounts 3.47 ===
+
+2007-09-13  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* configure.ac:
+	Add --disable-cast-checks, --disable-asserts, --disable-checks and
+	--enable-debug options.
+
+2007-09-12  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-plugin.c: (on_store_settings),
+	(transport_combo_changed_cb), (on_advanced_clicked):
+	Disable TLS and remove proxy options
+
+2007-09-12  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/sip.profile:
+	``priority'' is not a valid parameter for SIP.
+
+=== osso-accounts 3.46 ===
+
+2007-09-07  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c: (setup_button):
+	Set "Not available" insensitive messages on wizard buttons
+
+=== osso-accounts 3.45 ===
+
+2007-09-07  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* src/accounts-wizard-dialog.c:
+	Don't dim the ``Finish'' button when returning back to the previous
+	screen. But dim it if something gets changed. Fixes: NB#68293.
+
+	* plugins/gtalk-plugin.c, plugins/jabber-plugin.c:
+	Dim the ``Finish'' button when changing the radio button to choose
+	between new/existing account.
+
+2007-09-06  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	Don't undim the next page button while the second password field is
+	empty. Fixes: NB#68641.
+
+	* plugins/libosso-rtcom-accounts/rtcom-page.[hc]:
+	Add rtcom_page_set_object_can_next() API to allow any GObject to be
+	taken into account for the next page button dimming/undimming logic.
+	
+	* plugins/libosso-rtcom-accounts/rtcom-param-*.c,
+	plugins/sip-plugin.c:
+	Show default parameters from profile, when creating a new account.
+
+2007-09-05  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* docs/reference/libaccounts/libaccounts-decl.txt,
+	docs/reference/libaccounts/libaccounts-sections.txt,
+	docs/reference/libaccounts/tmpl/account-plugin.sgml,
+	libaccounts/account-edit-context.c, libaccounts/account-item.c,
+	libaccounts/account-plugin-loader.c,
+	libaccounts/account-plugin-manager.c, libaccounts/account-plugin.[hc],
+	libaccounts/account-service.c, libaccounts/account-wizard-context.c,
+	libaccounts/accounts-list.c:
+	Documentation improvements.
+
+=== osso-accounts 3.44 ===
+
+2007-09-04  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(size_prepared_cb):
+	Use addr_ib_avatar_too_big from osso-addressbook translation
+	domain (Fixes: NB#66294)
+
+2007-08-31  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/sip-plugin.c:
+	* plugins/sip.profile:
+	Make the SIP plugin recognize only those profile whose ConfigurationUI
+	field is set to ``osso-accounts''.
+
+=== osso-accounts 3.43 ===
+
+2007-08-30  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/libaccounts.pc.in:
+	Add missing linker option.
+
+=== osso-accounts 3.42 ===
+
+2007-08-30  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/gtalk-details.glade, plugins/jabber-details.glade,
+	plugins/sip-details.glade:
+	Updating logical string for account browse button.
+
+=== osso-accounts 3.41 ===
+
+2007-08-30  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c,
+	plugins/sip-existing-account.glade:
+	Update valid characters check for username and domain fields.
+
+=== osso-accounts 3.40 ===
+
+2007-08-29  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* debian/control:
+	Set required abook version
+	
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(rtcom_avatar_chooser_button_release_event):
+	Use osso_abook_avatar_popup_popup() instead of our own
+	temporary hack
+
+2007-08-28  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/sip-existing-account.glade:
+	* plugins/sip-plugin.c:
+	Add checkbox for enabling calls to PSTN lines.
+
+	* plugins/libosso-rtcom-accounts/rtcom-page.[hc]:
+	Introduce a "set-account" signal and make rtcom_page_set_account()
+	emit it.
+
+2007-08-28  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(avatar_selected_cb),
+	(rtcom_avatar_chooser_finalize), (avatar_popup_popup),
+	(rtcom_avatar_chooser_button_release_event):
+	Add OssoABookAvatarPopup for selecting avatars
+
+=== osso-accounts 3.39 ===
+	
+2007-08-27  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Upon disabling account, popup confirmation note only if the account is
+	connected. Fixes: NB#51091.
+
+=== osso-accounts 3.38 ===
+	
+2007-08-23  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	Show confirmation dialog before registering Jabber accounts, even if
+	connectivity is available. Fixes: NB #66600.
+
+=== osso-accounts 3.37 ===
+	
+2007-08-21  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	Fix retrieval of advanced settings on account registration.
+	Fixes: NB#66370.
+
+	* libaccounts/*.[hc], plugins/*.[hc],
+	plugins/libosso-rtcom-accounts/*.[hc, src/*.[hc]:
+	Update copyright notice.
+
+=== osso-accounts 3.36 ===
+	
+2007-08-21  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* src/accounts-ui.c:
+	Increase the minimum width of the dialog, so that pages don't change
+	sizes for most locales.
+
+	* plugins/gtalk-advanced.glade:
+	Don't set the width-request on the dialog, but on the widget that
+	actually need it.
+	Fixes: NB#66081.
+
+=== osso-accounts 3.35 ===
+	
+2007-08-20  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (accounts_ui_init):
+	Set insensitive messages for Edit and Delete buttons
+	(Fixes: NB#66076)
+
+2007-08-20  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Increase the buffer size for confirmation messages. Fixes: NB#66126.
+
+=== osso-accounts 3.34 ===
+	
+2007-08-20  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (accounts_ui_init):
+	Ensure initial focus is on the first visible item
+	(Fixes: NB#65135)
+
+=== osso-accounts 3.33 ===
+	
+2007-08-16  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/gtalk-details.glade, plugins/gtalk-existing-account.glade,
+	plugins/jabber-details.glade, plugins/jabber-existing-account.glade,
+	plugins/jabber-new-account.glade, plugins/sip-details.glade,
+	plugins/sip-existing-account.glade:
+	Set the default focus widget for every page.
+
+	* plugins/libosso-rtcom-accounts/rtcom-page.c:
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	If a RtcomWidget in a RtcomPage has the "can-default" property set, it
+	will receive the focus when the page is mapped.
+
+=== osso-accounts 3.32 ===
+	
+2007-08-14  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	Install include files in /usr/include/libosso-rtcom-accounts, instead
+	of /usr/include/osso-rtcom-accounts.
+
+=== osso-accounts 3.31 ===
+	
+2007-08-10  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts.pc.in, osso-rtcom-accounts.pc.in:
+	Add pkg-config files.
+
+	* autogen.sh, configure.ac, docs/Makefile.am,
+	docs/reference/Makefile.am, docs/reference/libaccounts/Makefile.am,
+	docs/reference/libaccounts/libaccounts-decl-list.txt,
+	docs/reference/libaccounts/libaccounts-decl.txt,
+	docs/reference/libaccounts/libaccounts-sections.txt,
+	docs/reference/libaccounts/tmpl/*.sgml:
+	Allow building of gtk-doc API reference.
+
+=== osso-accounts 3.30 ===
+	
+2007-08-09  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	Install headers for libosso-rtcom-accounts.
+
+	* libaccounts/Makefile.am:
+	Install headers for libaccount.
+
+=== osso-accounts 3.29 ===
+	
+2007-08-09  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/sip-plugin.c:
+	SIP plugin now handles all the profiles whose protocol is "sip".
+
+2007-08-08  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/*.glade, plugins/libosso-rtcom-accounts/glade/Makefile.am,
+	plugins/libosso-rtcom-accounts/glade/hildon.xml,
+	plugins/libosso-rtcom-accounts/glade/libglade-hildon.c,
+	plugins/libosso-rtcom-accounts/glade/rtcom-hildon.xml:
+	Rename the glade hildon support library to rtcom-hildon, to avoid
+	possible collisions with desktop.
+
+	* src/accounts-wizard-dialog.c:
+	Forgot to update src/ dir for API change (wonder how it could
+	compile...).
+
+2007-08-07  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/*.c:
+	Add gtk-docstrings to APIs.
+
+	* libaccounts/account-item.[hc], libaccounts/account-plugin.c,
+	libaccounts/account-service.[hc], plugins/gtalk-plugin.c,
+	plugins/jabber-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-account-item.c,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.c,
+	plugins/sip-plugin.c:
+	Rename some API for better consistency.
+
+=== osso-accounts 3.28 ===
+	
+2007-08-06  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/Makefile.am, libaccounts/account-item.[hc],
+	libaccounts/account-plugin.[hc], libaccounts/account-service.[hc],
+	plugins/gtalk-plugin.c, plugins/jabber-plugin.c,
+	plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/rtcom-account-item.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-account-service.[hc],
+	plugins/sip-plugin.c, src/accounts-wizard-dialog.c:
+	Introduce the AccountService class, whose objects represent the
+	Telepathy profiles, to allow for a plugin to provide support for more
+	than one profile.
+
+2007-08-02  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-edit-context.h, libaccounts/account-item.[hc],
+	libaccounts/account-plugin-manager.[hc],
+	libaccounts/account-plugin.[hc], libaccounts/accounts-list.h,
+	plugins/libosso-rtcom-accounts/rtcom-account-item.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.c,
+	src/accounts-wizard-dialog.c:
+	Allow the AccountItem to hold a reference to the AccountPlugin, since
+	that was done in the Rtcom implementations anyway.
+
+=== osso-accounts 3.27 ===
+	
+2007-07-26  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-advanced.glade:
+	* plugins/sip-plugin.c: (on_advanced_clicked):
+	Enable "Auto-detect STUN" by default as it used to be
+
+=== osso-accounts 3.26 ===
+	
+2007-07-26  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-advanced.glade:
+	* plugins/sip-plugin.c: (auto_stun_toggled_cb),
+	(on_advanced_clicked):
+	Bind "Auto-detect STUN" to "discover-stun" parameter.
+	For the time being, bind "Authentication user name" to
+	"auth-user" instead of less useful "extra-auth-user" param.
+	
+=== osso-accounts 3.25 ===
+
+2007-07-25  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/gtalk-details.glade:
+	* plugins/gtalk-new-select.glade:
+	* plugins/jabber-details.glade:
+	* plugins/jabber-new-select.glade:
+	Adjust minimum widths to avoid the dialog from resizing
+
+	* plugins/gtalk-plugin.c: (create_editing_pages):
+	* plugins/jabber-plugin.c: (create_editing_pages):
+	* plugins/libosso-rtcom-accounts/rtcom-lastpage.c: (add_text),
+	(rtcom_lastpage_init), (set_property), (get_property),
+	(rtcom_lastpage_class_init), (rtcom_lastpage_new):
+	Fix layout and show "Contacts will be copied from server" label
+	when appropriate
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	(account_is_unique):
+	* plugins/sip-details.glade:
+	Fix uniqueness check in edit mode
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c: (set_account),
+	(rtcom_username_init):
+	Make username and server editors equally wide
+	
+	* src/accounts-ui.c: (edit_clicked_cb):
+	* src/accounts-wizard-dialog.c: (accounts_wizard_dialog_destroy):
+	Remove unneeded debug spam
+
+2007-07-25  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/gtalk-new-select.glade:
+	* plugins/jabber-details.glade:
+	* plugins/jabber-new-account.glade:
+	* plugins/jabber-new-select.glade:
+	Fix wrapping of labels by setting minimum widths
+	
+	* plugins/jabber-plugin.c: (status_changed_cb),
+	(connection_connect_cb):
+	Unset rd->connection_requested before emitting
+	errors and freeing registration data
+
+=== osso-accounts 3.24 ===
+	
+2007-07-25  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/jabber-plugin.c: (connectivity_ready):
+	Use dbus_g_bus_get() instead of tp_get_bus() to get
+	reference counting right.
+
+=== osso-accounts 3.23 ===
+	
+2007-07-25  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/jabber-plugin.c: (jabber_plugin_dispose),
+	(jabber_plugin_finalize), (register_data_free),
+	(request_connection_cb), (connectivity_ready),
+	(connectivity_check), (register_account), (username_page):
+	- Plug leaks in account registration (Fixes: NB#64165)
+	- Make account uniqueness check work on the registration page
+
+=== osso-accounts 3.22 ===
+	
+2007-07-24  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	(account_is_unique):
+	Fix the uniqueness check (Fixes: NB#64067)
+
+=== osso-accounts 3.21 ===
+	
+2007-07-20  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* configure.ac:
+	* debian/control:
+	* plugins/Makefile.am:
+	* plugins/gtalk-plugin.c: (gtalk_plugin_init),
+	(gtalk_plugin_finalize), (new_account_validate):
+	Use libhildonmime and hildon_uri_open() to launch
+	the browser (Fixes: NB#63875)
+
+	* plugins/gtalk-new-account.glade:
+	Fix wrapping
+
+=== osso-accounts 3.20 ===
+	
+2007-07-16  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Enable autocompletion in username field. Fixes: NB#58596.
+
+=== osso-accounts 3.19 ===
+	
+2007-07-12  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	Fix creation of jabber accounts.
+
+=== osso-accounts 3.18 ===
+	
+2007-07-09  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	Use a workaround for gtk_dialog_run() corrupting the GMainLoop.
+	Fixes: NB#62217.
+
+=== osso-accounts 3.17 ===
+	
+2007-07-02  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/{gtalk,jabber,sip}-details.glade, src/accounts-ui.c:
+	Make account details page scrollable, and increase the default height
+	so that the page initially appears without scrollbar.
+	Fixes: NB#62202.
+
+2007-06-29  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.c:
+	On context dispose, disconnect the account-name-changed signal
+	handler.
+
+=== osso-accounts 3.16 ===
+	
+2007-06-27  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/gtalk-advanced.glade:
+	Center the action area buttons
+	
+	* plugins/jabber-advanced.glade:
+	Ditto + make the dialog wider by default
+
+=== osso-accounts 3.15 ===
+	
+2007-06-27  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Rewrite check for account uniqueness: don't assume that the account
+	returned by mc_account_lookup_with_profile() will have the same
+	account name, since it is also checking for the normalized name.
+	Instead, a straight comparison of the McAccount pointers is safer.
+	Fixes: NB#61858.
+
+=== osso-accounts 3.14 ===
+	
+2007-06-26  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c:
+	Sort plugins by their display name (Fixes: NB#60823)
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	Use the correct default avatar (Fixes: NB#61747)
+
+2007-06-21  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/sip-existing-account.glade:
+	Add error message when validating the page with an empty password
+	field. Fixes: NB#61355.
+
+2007-06-20  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Make sure we are not using a NULL string with strcmp.
+
+=== osso-accounts 3.13 ===
+	
+2007-06-20  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Make sure we don't store an uninitialized account name.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	Unref the account item, since the context takes ownership of it.
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.c:
+	Use g_object_ref_sink() instead of g_object_ref(), since pages might
+	have a floating reference.
+	
+	* plugins/libosso-rtcom-accounts/rtcom-widget.c:
+	Unref the account item on dispose.
+
+2007-06-19  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-displayname.c:
+	Avoid warnings from setting NULL values in the entry
+	
+	* src/accounts-wizard-dialog.c:
+	Unref objects in destroy rather than finalize.
+	Increase debug - there's a plenty of reference leaks to be plugged
+
+2007-06-19  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-plugin.c:
+	Disconnect the signal handler on the AccountsList before being
+	disposed.
+
+=== osso-accounts 3.12 ===
+
+2007-06-19  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	Don't leak the ConIcConnection. Fixes: NB#61131.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Don't hold a reference to the AccountsList.
+
+2007-06-19  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c: (accounts_wizard_dialog_finalize):
+	Do not leak the manager. Fixes: NB#61133.
+
+=== osso-accounts 3.11 ===
+
+2007-06-15  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-plugin-manager.c:
+	Prevent the plugins from being unloaded, since that would currently
+	lead to a crash.
+
+2007-06-15  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* configure.ac:
+	* src/Makefile.am:
+	Depend on hildon-help instead of osso-help
+	
+	* libaccounts/account-plugin-manager.c:
+	(account_plugin_manager_dispose),
+	(account_plugin_manager_finalize),
+	(account_plugin_manager_class_init):
+	Handle dispose properly
+	
+	* plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	(rtcom_account_plugin_get_account_by_name), (on_account_changed),
+	(on_account_deleted), (on_account_disabled), (on_account_enabled):
+	Revert the change from 2007-06-06 as useless
+	
+	* src/accounts-ui.c: (new_clicked_cb), (accounts_ui_init),
+	(accounts_ui_set_property), (accounts_ui_destroy),
+	(accounts_ui_finalize), (accounts_ui_class_init),
+	(accounts_ui_run_in_wizard_mode):
+	Use hildon-help API instead of osso-help. Unref objects in destroy
+	rather than finalize, so that circular refs do not result in leaks.
+
+2007-06-14  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(run_file_chooser_dialog), (set_account):
+	On clicking the "Reset" button, show the default avatar
+	(Fixes: NB#60494)
+
+=== osso-accounts 3.10 ===
+
+2007-06-13  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/gtalk-details.glade:
+	* plugins/jabber-details.glade:
+	* plugins/sip-details.glade:
+	Set the maximum length of account name and alias entries as 20
+	(Fixes: NB#60390)
+
+	* plugins/libosso-rtcom-accounts/rtcom-alias.c:
+	(rtcom_alias_invalid_input), (rtcom_alias_class_init):
+	* plugins/libosso-rtcom-accounts/rtcom-displayname.c:
+	(rtcom_displayname_invalid_input), (rtcom_displayname_class_init):
+	Add handlers for "invalid-input" signal
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c: (set_account):
+	Avoid a critical warning when there are no default domains
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(new_avatar_loaded_cb):
+	Do not set title on the Crop avatar dialog (Fixes: NB#58978)
+
+=== osso-accounts 3.9 ===
+
+2007-06-13  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/gtalk-advanced.glade:
+	* plugins/gtalk-details.glade:
+	* plugins/jabber-advanced.glade:
+	* plugins/jabber-details.glade:
+	* plugins/sip-advanced.glade:
+	* plugins/sip-details.glade:
+	* plugins/libosso-rtcom-accounts/rtcom-lastpage.c: (add_text):
+	* src/accounts-wizard-dialog.c: (construct_wizard_page):
+	Set minimum sizes and enable wrapping for labels that may not
+	fit into the wizard dialog without stretching it.
+
+	Correct advanced settings dialogs' sizes.
+	
+=== osso-accounts 3.8 ===
+
+2007-06-13  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip.profile:
+	Enable split-account capability and fix the icon name
+
+=== osso-accounts 3.7 ===
+	
+2007-06-12  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/glade/glade-rtcom.c:
+	(sizegroup_handler):
+	Hack around the HildonCaption/GtkSizeGroup size-requisition
+	issue.
+
+=== osso-accounts 3.6 ===
+	
+2007-06-12  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	(rtcom_account_item_account_set):
+	Fix "display-name" notification
+
+2007-06-12  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/*.glade, plugins/libosso-rtcom-accounts/glade/Makefile.am,
+	plugins/libosso-rtcom-accounts/glade/glade-rtcom.c,
+	plugins/libosso-rtcom-accounts/glade/osso-rtcom-accounts.xml,
+	plugins/libosso-rtcom-accounts/glade/rtcom-accounts.xml:
+	Make glade support library name consistent with the
+	libosso-rtcom-accounts library.
+
+	* configure.ac, plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/glade-rtcom.c,
+	plugins/libosso-rtcom-accounts/glade/glade-rtcom.c,
+	plugins/libosso-rtcom-accounts/hildon.xml,
+	plugins/libosso-rtcom-accounts/libglade-hildon.c,
+	plugins/libosso-rtcom-accounts/rtcom-accounts.xml:
+	Move glade support libraries in a separate subdirectory.
+
+=== osso-accounts 3.5 ===
+	
+2007-06-12  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	Try to workaround an automake bug: manually impose install
+	dependencies.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Get the toplevel window from the AccountsList object.
+
+=== osso-accounts 3.4 ===
+	
+2007-06-11  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/Makefile.am, plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.h:
+	Allow compilation in a build directory other than the srcdir.
+
+=== osso-accounts 3.3 ===
+	
+2007-06-11  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-string.c:
+	If a string parameter is empty, unset it in GConf.
+
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	Use install-exec-local instead of install-exec-hook, to fix the
+	compilation in some build environments.
+
+=== osso-accounts 3.2 ===
+	
+2007-06-08  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (delete_clicked_cb):
+	Add a delete confirmation note for the accounts list view
+
+=== osso-accounts 3.1 ===
+
+2007-06-08  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/gtalk-plugin.c, plugins/jabber-plugin.c,
+	plugins/sip-plugin.c:
+	Don't initialize displayname to the account name if empty.
+
+2007-06-08  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (avatar_notify_cb):
+	If the avatar is not set, use a placeholder
+
+=== osso-accounts 3.0 ===
+
+2007-06-07  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* configure.ac: Version 3.0.
+
+2007-06-06  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* configure.ac:
+	* src/osso-accounts-settings.pc.in:
+	Add a configuration file for other applications' convenience
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	(rtcom_account_plugin_get_account_by_name), (on_account_changed),
+	(on_account_deleted):
+	Reference the AccountItem just in case (might fix ugly warnings that
+	occurred as a side-effect of all plugins handling all monitor events)
+
+2007-06-06  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/gtalk-existing-account.glade,
+	plugins/jabber-existing-account.glade,
+	plugins/jabber-new-account.glade,
+	plugins/libosso-rtcom-accounts/rtcom-username.[hc],
+	plugins/sip-existing-account.glade:
+	Correct the check for invalid characters in the username.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	Only monitor account items belonging to this plugin.
+
+	* configure.ac, plugins/Makefile.am, plugins/google-talk.profile,
+	plugins/jabber.profile, plugins/sip.profile:
+	Add profile files.
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Fix check for uniqueness. Fix a compilation warning.
+
+	* plugins/gtalk-plugin.c:
+	In the advanced settings hash table, store the widget itself instead
+	of its name.
+
+2007-06-05  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c: (page_async_cb),
+	(button_clicked_cb):
+	Disable the "Previous" button while waiting for an async page to
+	complete.
+
+	* autogen.sh:
+	Do not run make automatically.
+
+	* configure.ac:
+	* plugins/Makefile.am:
+	* src/Makefile.am:
+	* src/main.c:
+	* src/osso-accounts.desktop:
+	Pluginize the UI.
+
+2007-06-05  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	Use an animation while the account is being registered.
+	Free the RegisterData struct as soon as registration procedure is
+	completed.
+	Don't crash if next button is pressed when a registration is already
+	going on.
+	Dim the "back" and "next" buttons while registering.
+
+	* plugins/jabber-plugin.c:
+	Set the toplevel window as parent for the banner messages.
+
+	* plugins/jabber-plugin.c:
+	Check and ask for connectivity.
+
+2007-06-05  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c: (show_error_as_banner),
+	(page_async_cb), (button_clicked_cb), (next_insensitive_cb):
+	Handle the "page-async" signal. Avoid requesting pages
+	while waiting for the page to become ready.
+
+2007-06-05  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-advanced.glade:
+	* plugins/sip-plugin.c: (on_store_settings),
+	(transport_combo_changed_cb), (auto_stun_toggled_cb),
+	(on_advanced_clicked):
+	Update port when changing between TLS and non-TLS transports.
+	Make auto-detect STUN setting work.
+	
+2007-06-05  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* configure.ac, plugins/Makefile.am:
+	Add a check for maemo-browser-interface.
+
+	* configure.ac, plugins/Makefile.am, plugins/jabber-plugin.c:
+	Introduce libconic.
+
+2007-06-04  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	Add registration for Jabber accounts.
+
+	* libaccounts/Makefile.am, libaccounts/account-error.h,
+	libaccounts/account-marshal.list,
+	libaccounts/account-wizard-context.c:
+	Allow pages to be retrieved asyncronously.
+
+2007-06-04  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-alias.c: (get_settings):
+	Avoid a warning
+
+	* plugins/sip-advanced.glade:
+	Update widget names and other properties
+
+	* plugins/sip-plugin.c: (get_advanced_settings),
+	(set_widget_setting), (setup_text_combo), (on_store_settings),
+	(on_advanced_clicked), (on_displayname_realize), (context_init):
+	Populate the combo boxes in advanced settings dialog
+
+	* src/accounts-ui.c: (accounts_ui_init):
+	Load default avatars before initializing plugins
+
+2007-06-04  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	In the advanced settings hash table, store the widget itself instead
+	of its name.
+
+2007-06-04  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/Makefile.am:
+	* plugins/sip-new-account.glade:
+	* plugins/sip-new-select.glade:
+	Remove unused files
+
+	* plugins/gtalk-plugin.c: (gtalk_plugin_finalize):
+	Do not close the DBus connection - we don't own it
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(run_file_chooser_dialog):
+	Enable mime type filtering
+	
+2007-06-01  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-int.c: (set_range):
+	Work around hildon_number_editor_set_range() resetting the default
+	value
+	
+	* plugins/sip-advanced.glade:
+	Colon-separate ranges
+
+2007-06-01  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/gtalk-existing-account.glade,
+	plugins/libosso-rtcom-accounts/rtcom-accounts.xml,
+	plugins/libosso-rtcom-accounts/rtcom-param-string.[hc]:
+	Add msg-empty to RtcomParamString and fix possible memleaks.
+
+2007-06-01  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-int.c:
+	(rtcom_param_int_init), (set_range), (set_property),
+	(rtcom_param_int_class_init):
+	Add a "range" property
+	
+	* plugins/sip-advanced.glade:
+	Set ranges for RtcomParamInt widgets
+
+2007-06-01  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/gtalk-advanced.glade, plugins/gtalk-plugin.c:
+	Gtalk advanced settings page.
+
+	* plugins/gtalk-new-account.glade, plugins/gtalk-plugin.c:
+	Gtalk registration page.
+
+2007-06-01  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-int.c:
+	(rtcom_param_int_init):
+	Set "value" as 0 initially.
+	
+	* plugins/sip-advanced.glade:
+	Correct default values and params of Rtcom widgets
+
+2007-06-01  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/sip-plugin.c: (username_page), (create_editing_pages),
+	(context_init):
+	Remove registration path from the SIP plugin
+
+	* plugins/sip-advanced.glade:
+	Implement proper SIP advanced settings layout
+	
+2007-06-01  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-advanced.glade, plugins/jabber-plugin.c:
+	Make old-ssl button interact with port and ignore-errors widgets.
+
+2007-06-01  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* Add stubs for SIP and Gtalk plugins
+
+2007-06-01  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-advanced.glade,
+	plugins/libosso-rtcom-accounts/rtcom-param-string.[hc]:
+	Add "nospaces" and "invalid-chars" properties to RtcomParamString.
+
+2007-06-01  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c:
+	Make the default size of the wizard dialog larger
+
+2007-05-31  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	Monitor account creation/deletion.
+
+2007-05-31  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(new_avatar_loaded_cb):
+	Display a banner from osso-imageviewer after failing to
+	load an avatar
+
+2007-05-31  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(read_idle_func):
+	Fix a double g_error_free ()
+
+2007-05-31  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/Makefile.am, plugins/jabber-existing-account.glade,
+	plugins/jabber-plugin.c:
+	Add existing account username page.
+
+	* plugins/jabber-advanced.glade, plugins/jabber-details.glade,
+	plugins/jabber-new-account.glade,
+	plugins/libosso-rtcom-accounts/rtcom-account-item.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-widget.c:
+	Remove setup-change property: reconnection must be handled by MC.
+
+	* plugins/jabber-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-context.[hc]:
+	When getting back to the selection page, correctly handle
+	creation/reuse of the next pages.
+
+	* plugins/jabber-advanced.glade, plugins/jabber-new-account.glade:
+	Set the name-change and setup-change properties where needed.
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-{bool,int,string}.c,
+	plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Call rtcom_widget_value_changed() when the value of the field changes.
+	
+	* plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Introduce name-change and setup-change properties, to signal some
+	special action on the account item.
+
+2007-05-31  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(store_settings):
+	Fix a crash on saving avatar
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	(rtcom_account_item_new):
+	Set "account-name" after the "plugin-name" property
+
+2007-05-30  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.c,
+	plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Have RtcomUsername notify the account of the name change, and the
+	context react to it.
+
+	* plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Add rtcom_widget_get_account() method.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.[hc]:
+	Add "setup-change" and "name-change" signals, and methods for emitting
+	them.
+
+	* plugins/jabber-plugin.c, plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/rtcom-accounts.h,
+	plugins/libosso-rtcom-accounts/rtcom-lastpage.[hc]:
+	Implement RtcomLastpage and use it.
+
+	* plugins/jabber-details.glade, plugins/jabber-plugin.c:
+	On entering the details page, set displayname to the account name, if
+	empty.
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c,
+	plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Add rtcom_widget_get_value() method and implement it in RtcomUsername.
+
+2007-05-29  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	Implement set_accounts() method, and load the default avatar
+	there depending on profile caps. Show insensitive messages in case
+	avatars are not supported.
+
+2007-05-29  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	Fix compilation when HAVE_GLADEUI is not defined
+
+2007-05-29  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-details.glade,
+	plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/glade-rtcom.c,
+	plugins/libosso-rtcom-accounts/rtcom-accounts.h,
+	plugins/libosso-rtcom-accounts/rtcom-accounts.xml,
+	plugins/libosso-rtcom-accounts/rtcom-alias.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-displayname.[hc]:
+	Implement RtcomAlias and RtcomDisplayname widgets, and use them.
+
+	* plugins/Makefile.am, plugins/jabber-details.glade,
+	plugins/jabber-plugin.c:
+	Implement the details page.
+
+	* plugins/Makefile.am, plugins/jabber-advanced.glade,
+	plugins/jabber-new-account.glade, plugins/jabber-plugin.c:
+	Implement Jabber advanced settings dialog.
+
+	* libaccounts/account-edit-context.[hc], libaccounts/account-plugin.h,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-context.[hc]:
+	Keep a reference to the plugin from the AccountEditContext and add the
+	account_edit_context_get_plugin() API to retrieve it.
+
+2007-05-28  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* configure.ac, plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/hildon.xml,
+	plugins/libosso-rtcom-accounts/rtcom-accounts.xml:
+	Check for gladeui (glade-3) availability and in case install the rtcom
+	catalogue there.
+
+2007-05-23  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(size_prepared_cb):
+	Check image size, downscale large JPEGs, error out on other
+	formats
+
+2007-05-23  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/Makefile.am, plugins/jabber-new-select.glade,
+	plugins/jabber-plugin.c:
+	Add the Jabber selection page for new accounts.
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.[hc]:
+	Use "last" page property to determine if we are on the last page of
+	the wizard. Add rtcom_context_append_page().
+
+	* libaccounts/account-error.h, plugins/jabber-new-account.glade,
+	plugins/jabber-plugin.c:
+	Added check for empty password field and non-matching passwords.
+
+2007-05-22  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	Add a "button" property for connecting a button with the widget
+
+	* src/accounts-wizard-dialog.c: (button_clicked_cb):
+	Set "Previous" button sensitivity correctly upon reaching
+	the first page in edit mode
+
+2007-05-22  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c:
+	Update to the new libaccounts API
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(mc_avatar_loaded_cb), (rtcom_avatar_chooser_init):
+	Load the placeholder avatar even if get_settings() isn't called
+
+2007-05-22  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.c:
+	* plugins/libosso-rtcom-accounts/rtcom-page.[hc]:
+	Add "title" property to RtcomPage and let the context return it.
+
+	* libaccounts/account-error.h,
+	plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Add servername length check, and report of error messages on empty
+	fields.
+	Check for duplicate account name.
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.c:
+	Handle first/last page.
+
+	* plugins/jabber-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-context.[hc]:
+	Port to the new plugin API.
+
+	* libaccounts/Makefile.am, libaccounts/account-edit-context.[hc],
+	libaccounts/account-plugin.[hc],
+	libaccounts/account-wizard-context.[hc]:
+	Remove from the AccountWizardContext object all the members specific
+	to the wizard, and rename it AccountEditContext.
+	Create an interface named AccountWizardContext for wizard-like
+	editing. Move into this interface all the wizard methods there were
+	implemented in AccountPlugin.
+
+2007-05-21  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	(run_file_chooser_dialog):
+	Cancel possible image loading
+
+	* src/accounts-wizard-dialog.c: (previous_insensitive_cb),
+	(next_insensitive_cb), (accounts_wizard_dialog_init):
+	Add insensitive banners for next and previous buttons
+
+2007-05-21  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* configure.ac:
+	* plugins/jabber-plugin.c: (_jabber_plugin_get_page):
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.c:
+	* plugins/libosso-rtcom-accounts/rtcom-avatar-chooser.h:
+	Added initial version of rtcom-avatar-chooser.[ch], as well as
+	related test code in the jabber plugin.
+
+2007-05-21  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-username.c:
+	Implement some validation.
+
+	* libaccounts/account-plugin.[hc]:
+	Implement account_plugin_go_{next,back}() convenience functions.
+
+	* plugins/jabber-plugin.c:
+	Support new way of building pages.
+
+	* libaccounts/account-error.h,
+	plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-context.[hc]:
+	Store the wizard pages into the context and provide APIs to modify the
+	list.
+
+	* plugins/libosso-rtcom-accounts/rtcom-page.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Add a "validate" signal to be emitted on the page before switching to
+	the next one; let the widgets listen to this signal and possibly
+	prevent the page change.
+
+2007-05-18  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-context.c,
+	plugins/libosso-rtcom-accounts/rtcom-page.[hc]:
+	Introduce "last" page property and use it.
+
+	* plugins/jabber-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-context.[hc]:
+	Let the context know what the current page is.
+
+	* plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Add error message string as a member field.
+
+	* plugins/jabber-plugin.c, plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-accounts.h,
+	plugins/libosso-rtcom-accounts/rtcom-context.[hc]:
+	Create RtcomContext as a subclass of AccountWizardContext to store
+	some rtcom-specific context information.
+
+2007-05-15  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-new-account.glade,
+	plugins/libosso-rtcom-accounts/glade-rtcom.c:
+	Hack for supporting GtkSizeGroup in the glade file.
+
+	* plugins/jabber-new-account.glade,
+	plugins/libosso-rtcom-accounts/rtcom-param-string.[hc]:
+	Make RtcomParamString set its "can-next" propery as needed.
+
+2007-05-14  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (accounts_ui_get_is_empty):
+	Simplify this a bit
+
+	* src/accounts-wizard-dialog.c: (notify_can_next_cb),
+	(notify_can_back_cb), (notify_can_finish_cb),
+	(connect_context_handlers), (disconnect_context_handlers),
+	(button_clicked_cb), (accounts_wizard_dialog_constructor):
+	Add notify handlers for context properties
+
+2007-05-14  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Correctly set "supports-avatar" property.
+
+	* plugins/jabber-new-account.glade, plugins/jabber-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-page.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-username.c,
+	plugins/libosso-rtcom-accounts/rtcom-widget.c:
+	Automatically set "can-next" flag by monitoring widgets' status.
+
+2007-05-14  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* configure.ac:
+	* src/Makefile.am:
+	Add dependency on libossohelp
+
+	* src/accounts-ui.c: (new_clicked_cb), (accounts_ui_init),
+	(accounts_ui_get_property), (accounts_ui_set_property),
+	(accounts_ui_class_init):
+	Add property for osso-context (required by the help API)
+	Enable help for the list and wizard dialogs
+
+	* src/accounts-wizard-dialog.c: (button_clicked_cb),
+	Plug a memory leak
+
+	* src/main.c: (execute), (main):
+	Set up an osso context and pass it on to accounts dialog
+
+	* src/accounts-ui.c: (accounts_ui_get_is_empty),
+	(accounts_ui_run_in_wizard_mode):
+	Add two new functions, as we need to run the applet in
+	wizard mode when the following is true: no accounts and
+	not run from within the control panel
+
+2007-05-11  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Disconnect RtcomWidget's handlers on widget destruction.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.[hc]:
+	Create a McAccountMonitor and notify property changes.
+
+2007-05-11  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (edit_clicked_cb), (foreach_func),
+	(_accounts_list_get_all):
+	Do not set the default size in edit mode.
+	Implement get_all() method
+
+	* src/accounts-ui.c: (_accounts_list_add), (_accounts_list_remove),
+	(foreach_func), (_accounts_list_get_all):
+	Add sanity checks for input values
+
+	* src/accounts-ui.c: (name_notify_cb), (display_name_notify_cb),
+	(avatar_notify_cb), (enabled_notify_cb):
+	Do not confuse AccountItem with AccountsUI in notify handlers
+
+2007-05-11  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (check_flash_space), (new_clicked_cb),
+	(edit_clicked_cb):
+	Make the default size of the wizard larger
+
+2007-05-11  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/libglade-hildon.c:
+	s/hildon-widgets/hildon/
+
+	* src/accounts-ui.c: (get_iter_by_item), (update_store),
+	(name_notify_cb), (display_name_notify_cb), (avatar_notify_cb),
+	(enabled_notify_cb), (check_flash_space), (new_clicked_cb),
+	(add_item_to_store), (load_avatar), (accounts_ui_init),
+	(accounts_ui_finalize), (_accounts_list_remove):
+	Add notify:: handlers for AccountItem properties.
+	Check free flash space before allowing to add New accounts.
+	Load different default avatar for items that do not support avatars.
+
+2007-05-09  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/libglade-hildon.c:
+	Add libglade helper module for Hildon, since libglade-hildon is not
+	available in the repository.
+
+	* plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/glade-rtcom.c,
+	plugins/libosso-rtcom-accounts/rtcom-accounts.h,
+	plugins/libosso-rtcom-accounts/rtcom-username.[hc]:
+	New RtcomUsername widget.
+
+	* plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Let interface implementations be able to intercept the set_account()
+	call.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.[hc]:
+	Add rtcom_account_item_get_mc_profile() method.
+
+	* libaccounts/account-plugin.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.c,
+	src/accounts-wizard-dialog.c:
+	Create a separate get_display_method() for returning plugin's display
+	name.
+
+2007-05-09  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c:
+	Fix sorting of "enabled" column. Code formatting fixes.
+
+	* src/accounts-wizard-dialog.c: (accounts_wizard_dialog_init):
+	Add H_() macro for strings from "hildon-libs" translation domain
+
+2007-05-08  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (enable_toggled_cb), (user_name_data_func),
+	(construct_tree_view), (add_item_to_store):
+	Plug a reference leak in enable_toggled_cb(). Add a data function
+	for the user name column, so it displays both account and display name.
+	Use the placeholder avatar image when a plugin does not provide any.
+
+	* src/accounts-wizard-dialog.c: (button_clicked_cb):
+	Display errors from plugins as banners rather than warnings in stdout
+
+2007-05-08  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (get_selected_account_item),
+	(enable_toggled_cb), (construct_tree_view), (add_item_to_store):
+	Do not leak a GtkTreePath. Terminate a gtk_list_store_set() call with -1.
+	Associate "service icon" and "enabled" columns with respective tree view
+	columns.
+
+2007-05-08  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	Let the get_name() method return the profile display name.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Set the account name.
+
+	* plugins/Makefile.am, plugins/jabber-page0.glade,
+	plugins/jabber-plugin.c:
+	Load a page from a glade interface XML file.
+
+	* configure.ac, plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/glade-rtcom.c:
+	Add libglade helper module for rtcom widgets.
+
+2007-05-07  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.c:
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	* plugins/libosso-rtcom-accounts/rtcom-accounts.h:
+	Create global include file.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.c:
+	Set the properties needed for the listing.
+
+	* libaccounts/account-item.[hc]:
+	Add "supports-avatar" property.
+
+	* plugins/jabber-plugin.c:
+	Test the new widgets.
+
+	* plugins/Makefile.am:
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	* plugins/libosso-rtcom-accounts/rtcom-param-{int,bool}.[hc]:
+	Add widgets for int and boolean parameters.
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-string.c:
+	Implement get_settings().
+
+	* plugins/jabber-plugin.c:
+	* plugins/libosso-rtcom-accounts/Makefile.am:
+	* plugins/libosso-rtcom-accounts/rtcom-page.[hc]:
+	* plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Add RtcomPage widget.
+
+	* plugins/jabber-plugin.c:
+	Test new implementation of RtcomParamString.
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-string.c:
+	Use new rtcom way of defining a widget.
+
+	* plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Find some way to implement interface properties.
+
+2007-05-04  Naba Kumar  <naba.kumar@nokia.com>
+
+	* configure.ac, Makefile.am, docs/Makefile.am,
+	docs/accounts.txt, docs/accounts.dia, docs/accounts.png:
+	Added architecture documents.
+	
+2007-05-04  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* plugins/jabber-plugin.[hc]:
+	Test the RtcomParamString widget.
+
+	* plugins/libosso-rtcom-accounts/rtcom-param-string.[hc]:
+	Add a widget for McAccount string parameters.
+
+	* plugins/libosso-rtcom-accounts/rtcom-widget.[hc]:
+	Add interface and some common code for Rtcom widgets.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.[hc]:
+	Make the McAccount member data public, and remove it from the
+	store-settings signal.
+
+2007-05-04  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (accounts_ui_init):
+	Move plugin initialization later
+
+	* src/accounts-wizard-dialog.c: (button_clicked_cb),
+	(accounts_wizard_dialog_constructor):
+	Set button sensitivities properly when there are no plugins
+
+2007-05-03  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c:
+	Make the wizard get pages from the plugin and navigate between them
+
+2007-05-03  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-plugin.[hc], plugins/jabber-plugin.c,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	Make get_page_title() return a constant string.
+
+	* libaccounts/account-plugin-manager.c:
+	Fix loading of plugins.
+
+2007-05-03  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-wizard-dialog.c: (construct_service_page):
+	Activate first row in combo box, and s/set_attributes/add_attribute/
+
+2007-05-02  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-plugin-manager.c:
+	Copy the list of plugin paths.
+
+	* autogen.sh:
+	Create autogen.sh.
+	
+	* libaccounts/Makefile.am, libaccounts/libaccounts.pc.in:
+	Create pkg-config file.
+	
+	* configure.ac, plugins/Makefile.am, src/Makefile.am,
+	src/accounts-ui.c:
+	Add a --with-accounts-dir to the configure script to determine where
+	plugins should be installed, and a PLUGIN_DIR preprocessor macro for
+	the accounts-ui.
+
+	* plugins/libosso-rtcom-accounts/Makefile.am,
+	plugins/libosso-rtcom-accounts/rtcom-account-item.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-account-marshal.list,
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.c:
+	Create the McAccount and store its data only when editing is finished.
+
+2007-04-30  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-plugin-manager.c:
+	Fix plugin loading.
+
+	* libaccounts/account-plugin.c:
+	Add private GObject private struct.
+
+	* libaccounts/account-wizard-context.h:
+	Fix typo on get_current_page return value.
+
+	* plugins/Makefile.am:
+	* plugins/jabber-plugin.[hc]:
+	Initial implementation of a Jabber plugin.
+
+2007-04-30  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c: (accounts_ui_class_init):
+	* src/accounts-ui.h:
+	Remove unused signals and properties; Don't use deprecated hildon icon
+	sizes.
+
+	* src/accounts-wizard-dialog.c: (button_clicked_cb):
+	Set page titles properly
+
+2007-04-27  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c:
+	Open AccountsWizard on "Edit and "New" button clicked
+
+	* src/accounts-wizard-dialog.[ch]:
+	Add new construction properties; Add intro and service pages that are
+	shown when creating a new account
+
+2007-04-27  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* src/accounts-ui.c:
+	Implement methods "add" and "remove" on the AccountsList interface;
+	Display an empty widget and dim Edit and Delete buttons when there are
+	no accounts
+
+2007-04-26  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-item.[hc]:
+	Add "display-name", "service-name" and "service-icon" properties.
+
+	* plugins/libosso-rtcom-accounts/rtcom-account-item.[hc],
+	plugins/libosso-rtcom-accounts/rtcom-account-plugin.[hc]:
+	Implement Rtcom account creation/setup/deletion. Correct GType related
+	macros in the header files.
+	Implement begin_new() virtual method. Fix a memory leak.
+
+	* libaccounts/account-plugin.[hc]:
+	Add "deleted" virtual method for implementing account deletion.
+
+2007-04-24  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* libaccounts/accounts-list.c: (accounts_list_add),
+	(accounts_list_remove), (accounts_list_base_init):
+	Rename "add" and "remove" signals as "add-item" and "remove-item", so
+	that they do not conflict with GtkContainer's signals; Fix signal emission
+
+	* src/accounts-ui.c: (enable_toggled_cb), (construct_tree_view),
+	(sort_func), (add_item_to_store), (item_added_cb),
+	(item_removed_cb), (accounts_ui_init), (accounts_ui_finalize),
+	(accounts_ui_class_init): Set up GtkListStore with all the needed columns, plus
+	make it and the GtkTreeView sortable.
+
+	* src/main.c: (execute): Set dialog title
+
+2007-04-24  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/accounts-list.c:
+	Add "add" and "remove" signals to the AccountsList interface.
+
+	* libaccounts/account-plugin-manager.[hc]:
+	Add AccountsList parameter to account_plugin_manager_new(), and let
+	the manager initialize the plugins.
+
+	* configure.ac, plugins/Makefile.am, plugins/libosso-rtcom-accounts/*:
+	Add plugins/libosso-rtcom-accounts for common Rtcom account
+	functionality.
+
+2007-04-23  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* Makefile.am:
+	Build libaccounts/ before src/
+
+	* configure.ac:
+	* src/Makefile.am:
+	Enable l10n support; add checks for hildon-control-panel and libosso
+
+	* src/accounts-ui.h:
+	Derive from GtkDialog instead of GObject
+
+	* src/accounts-ui.c:
+	Add buttons to action area
+
+	* src/accounts-wizard-dialog.[hc]:
+	Clean up
+
+	* src/main.c: (execute), (save_state), (main):
+	Add execute and save_state functions as required by the CP iface
+
+	* src/accounts-ui.c: (construct_tree_view), (accounts_ui_init):
+	Construct a tree view for displaying the accounts
+
+2007-04-23  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-item.[hc]:
+	Implement properties, add account_item_set_enabled() method.
+
+	* libaccounts/Makefile.am:
+	* libaccounts/account-error.h:
+	Add account-error.h, for error definitions.
+
+	* libaccounts/account-plugin-manager.c:
+	Implement account_plugin_manager_get_plugin().
+
+	* libaccounts/account-plugin.[hc]:
+	Make account_plugin_get_name() return a const string.
+
+	* libaccounts/account-plugin-loader.[hc], libaccounts/Makefile.am:
+	Added AccountPluginLoader class, for implementing plugins as
+	GTypeModule.
+
+	* libaccounts/account-plugin.[hc]:
+	Add the AccountsList object as a parameter for setup(), and also as a
+	read-only property.
+
+	* libaccounts/account-plugin-manager.c:
+	Implement account_plugin_manager_list().
+
+2007-04-20  Lassi Syrjala  <lassi.syrjala@nokia.com>
+
+	* autogen.sh: Deleted - use autoreconf instead
+
+	* configure.ac: Added check for hildon-1
+
+	* src/accounts-ui.c: (_accounts_list_get_all):
+	Return NULL for now to avoid a compiler warning
+
+	* src/Makefile.am:
+	* src/accounts-wizard-dialog.c:
+	* src/accounts-wizard-dialog.h:
+	Added AccountsWizardDialog stub
+
+2007-04-20  Alberto Mardegan  <alberto.mardegan@nokia.com>
+
+	* libaccounts/account-plugin.c:
+	* libaccounts/account-wizard-context.[hc]:
+	Implemented properties.
+
+	* libaccounts/account-wizard-context.[hc]:
+	Added "can-finish" property.
+
+	* AUTHORS:
+	Added Lassi, Naba and myself
+
+	* configure.ac:
+	Added check for Gtk+.
+
+	* libaccounts/*:
+	Make the whole thing build. Connect virtual methods.
+
+	* src/*:
+	Make the whole thing build.
+

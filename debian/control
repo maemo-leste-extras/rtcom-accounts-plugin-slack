@@ -1,0 +1,37 @@
+Source: rtcom-accounts-plugin-slack
+Priority: optional
+Section: user/network
+Maintainer: Merlijn Wajer <merlijn@wizzup.org>
+Build-Depends: debhelper (>= 11), librtcom-accounts-ui-dev,
+ librtcom-accounts-widgets-dev (>= 4.141.0), libgtk2.0-dev, libglade2-dev,
+ libhildon1-dev, libtelepathy-glib-dev, libhildonmime-dev
+Standards-Version: 4.1.3
+Vcs-Browser: https://github.com/maemo-leste-extras/rtcom-accounts-plugin-slack
+Vcs-Git: https://github.com/maemo-leste-extras/rtcom-accounts-plugin-slack.git
+
+Package: rtcom-accounts-plugin-slack
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}, libaccounts-glade, purple-slack
+Description: Slack plugin for the Accounts applet
+ Plugin for configuring telepathy slack account
+XSBC-Maemo-Display-Name: Slack Accounts Plugin
+XB-Maemo-Icon-26:
+ iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADtElEQVRo3u2YbUhTURjHNytfErMs
+ K02nIlpGuYJhZBAGQm8SGAQ6FPqQVBCiIfVJIwixggpEgrAStJcPhZqwjFpgYaRlIdSHJNChoaTS
+ Mo1Kcf0fvRvHdbed3be60IEf0/HI+f+8957znGswSBxZnc5QcAw8A0OgF1wAa339TaatMhnUgvdg
+ EDwBRWZb5SKDlgMhl4EO4BJhBFhEwucCJ3CJ0ALCtRRo9BHejYMkmfDxYNxHeDcXtQqfAqYDCBDH
+ GYGzAcITk2C5FgIFHOGJW4yAnUOAyNFC4DCnQCsj0MUpkKeFgEXXAts6nSEI161bAeEqbAJjuhUQ
+ JNJAG/ipSwFGJEa4Ipu9SNKFAM/QTAD/tTiwT1jrgyUHRCotYHl4xojv14N8sAes9NXb1Pu5n3kZ
+ B2W0UikhIATvALNMzXdwydM7YcJw8FxmcG+q5Qrg51Tw2U9ty1wXi8nKFQ5PzACzTIE2jvpCEnij
+ ggBxXqoAPmPBL456GwlMqCTQLEMgi7O+jwQ+qSTQwAi0cwbaIdRv56zvIYEGlQSKGYEKjjB04IkM
+ UqCGBDaASYXDvwVhjEA06A8Q5iRTzyMwCuLcSyltXl8UCv+OTm0im1mmDwla469ssVWFBCEwDLLF
+ duEqYAN2CdwHJSDCT0sRBUqFQzy9kbj6R5D5uo3CKc4bWlpPie7G/8ffHgMmayw4DZqBXYQFL6wc
+ 6cVGfLcT1IF20ASKB5KsYb7mGHuQGQmOgrvALoF7oBREe4fPBaPA5QfPg4mQS/D7NTArUtcDEkXC
+ Z4A+4FKAQWBxh08DEwHCLxQwWasD1L4mSSZ8FPioUHg3I2ANhbnOEd4jgM/VYIqjvoARKFM4vJtq
+ CjQYpMBBzvobjIBNJYFXBs7bhzAJAkc461sZgRcqCfRRoF6OMF9xT0fIEGhSSeARBargCNPAPMBS
+ BPaqJFBES2IEJuvyE8QB4mUJtG01YrJGhcPjuTIvdodaIWxE00wAWuMfg2SvPSNogfmrYA7FpDVg
+ SmbwH6AOLBXbjU0gHxwCGY60IqNIjSQB5nZaBfJAgQQOgDi5LYcsgX+hZ5LyEMeDFC+SqTfSi0CX
+ j/v5G7g51xLoVMBNP0jQswDRoneBGZCoZwFitxYChZwCtxmBp5wCu7QQSAUzHAInGIFzHOFph47R
+ 6jm4EyD8EIhmBNYBZwCBy1oupTHgpY/wYyBbpIXYL6z7YuHbRXsbVSWSrOEIWg66wTD4AGpBgp+3
+ EumgXjgfD4NOUOLpKiWM3y13O6WXcrTDAAAAAElFTkSuQmCC
