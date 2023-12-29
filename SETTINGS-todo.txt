@@ -7,6 +7,9 @@ purple_account_get_bool(sa->account, "lazy_load", FALSE);
 /* TODO */
 purple_account_get_string(account, "api_token", NULL);
 
+/* Probably want to include this one */
+enable_avatar_download
+
 purple_account_get_bool(sa->account, "channel_members", TRUE)
 purple_account_get_bool(sa->account, "open_history", FALSE)
 purple_account_get_bool(sa->account, "connect_history", FALSE);
