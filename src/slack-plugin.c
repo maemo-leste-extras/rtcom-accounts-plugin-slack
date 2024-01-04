@@ -30,9 +30,6 @@
 #include <librtcom-accounts-widgets/rtcom-login.h>
 #include <librtcom-accounts-widgets/rtcom-param-string.h>
 
-#define SLACK_NEW_ACCOUNT_URI \
-  "https://www.slack.com/"
-
 typedef struct _SlackPluginClass SlackPluginClass;
 typedef struct _SlackPlugin SlackPlugin;
 
@@ -56,13 +53,10 @@ slack_plugin_init(SlackPlugin *self)
 
   RTCOM_ACCOUNT_PLUGIN(self)->name = "slack";
   RTCOM_ACCOUNT_PLUGIN(self)->capabilities =
-      RTCOM_PLUGIN_CAPABILITY_ALL & ~RTCOM_PLUGIN_CAPABILITY_FORGOT_PWD;
+      RTCOM_PLUGIN_CAPABILITY_ALL & ~RTCOM_PLUGIN_CAPABILITY_FORGOT_PWD & ~RTCOM_PLUGIN_CAPABILITY_REGISTER;
   service = rtcom_account_plugin_add_service(RTCOM_ACCOUNT_PLUGIN(self),
                                              "haze/slack");
-
-  g_object_set(G_OBJECT(service),
-               "display-name", "Slack",
-               NULL);
+  (void)service;
 
   glade_init();
 }
@@ -170,30 +164,6 @@ slack_plugin_on_advanced_cb(gpointer data)
 }
 
 static void
-slack_plugin_on_register_cb(gpointer userdata)
-{
-  gchar *uri, *lang, *p;
-  GError *error = NULL;
-
-  lang = g_strdup(getenv("LANG"));
-  p = strchr(lang, '.');
-
-  if (p)
-    *p = 0;
-
-  uri = g_strconcat(SLACK_NEW_ACCOUNT_URI, lang, NULL);
-  g_free(lang);
-
-  if (!hildon_uri_open(uri, NULL, &error))
-  {
-    g_warning("Failed to open browser: %s", error->message);
-    g_error_free(error);
-  }
-
-  g_free(uri);
-}
-
-static void
 slack_plugin_context_init(RtcomAccountPlugin *plugin,
                              RtcomDialogContext *context)
 {
@@ -223,9 +193,7 @@ slack_plugin_context_init(RtcomAccountPlugin *plugin,
   }
   else
   {
-    gchar *username_label = g_strconcat(_("accounts_fi_email"),
-                                        "/",
-                                        _("accounts_fi_phone"),
+    gchar *username_label = g_strconcat(_("accounts_fi_slack_user_and_host"),
                                         NULL);
 
     page =
@@ -239,8 +207,6 @@ slack_plugin_context_init(RtcomAccountPlugin *plugin,
         NULL);
 
     g_free(username_label);
-    rtcom_login_connect_on_register(
-      RTCOM_LOGIN(page), G_CALLBACK(slack_plugin_on_register_cb), NULL);
     rtcom_login_connect_on_advanced(
           RTCOM_LOGIN(page), G_CALLBACK(slack_plugin_on_advanced_cb),
           context);

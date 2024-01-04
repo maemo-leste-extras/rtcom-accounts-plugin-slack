@@ -60,7 +60,7 @@
                               <widget class="RtcomParamInt" id="ratelimit-delay">
                                 <property name="visible">True</property>
                                 <property name="text">15</property>
-                                <property name="field">ratelimit_delay</property>
+                                <property name="field">ratelimit-delay</property>
                                 <property name="range">1:300</property>
                               </widget>
                               <packing>
@@ -74,8 +74,42 @@
                         </child>
 
                         <child>
+                          <widget class="GtkTable" id="api-table">
+                            <property name="visible">True</property>
+                            <property name="n_rows">1</property>
+                            <property name="n_columns">2</property>
+                            <property name="column_spacing">16</property>
+
+                            <child>
+                              <widget class="GtkLabel" id="api-token-lbl">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">accounts_fi_slack_api_token</property>
+                                <property name="xalign">0.0</property>
+                              </widget>
+                              <packing>
+                                <property name="x_options">GTK_SHRINK | GTK_FILL</property>
+                                <property name="y_options">GTK_SHRINK</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="RtcomParamString" id="api-token">
+                                <property name="visible">True</property>
+                                <property name="text"></property>
+                                <property name="field">api-token</property>
+                              </widget>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="right_attach">2</property>
+                                <property name="x_options">GTK_EXPAND | GTK_FILL</property>
+                                <property name="y_options">GTK_SHRINK</property>
+                              </packing>
+                            </child>
+                          </widget>
+                        </child>
+
+                        <child>
                           <widget class="RtcomParamBool" id="lazy-load-Button-finger">
-                            <property name="field">lazy_load</property>
+                            <property name="field">lazy-load</property>
                             <property name="label" translatable="yes">accounts_fi_slack_lazy_load</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -92,8 +126,8 @@
 
                         <child>
                           <widget class="RtcomParamBool" id="open-chat-Button-finger">
-                            <property name="field">open_chat</property>
-                            <property name="label" translatable="yes">accounts_fi_slack_open_chat</property>
+                            <property name="field">open-chat</property>
+                            <property name="label" translatable="yes">accounts_fi_slack_open-chat</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="active">True</property>
@@ -108,7 +142,7 @@
 
                         <child>
                           <widget class="RtcomParamBool" id="enable-avatar-download-Button-finger">
-                            <property name="field">enable_avatar_download</property>
+                            <property name="field">enable-avatar-download</property>
                             <property name="label" translatable="yes">accounts_fi_slack_enable_avatar_download</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>

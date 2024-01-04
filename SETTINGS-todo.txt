@@ -4,11 +4,9 @@ purple_account_get_int(sa->account, "ratelimit_delay", 15
 purple_account_get_bool(sa->account, "open_chat", FALSE)
 purple_account_get_bool(sa->account, "lazy_load", FALSE);
 enable_avatar_download
-
-/* TODO */
 purple_account_get_string(account, "api_token", NULL);
 
-/* Probably want to include this one */
+/* TODO */
 
 purple_account_get_bool(sa->account, "channel_members", TRUE)
 purple_account_get_bool(sa->account, "open_history", FALSE)
