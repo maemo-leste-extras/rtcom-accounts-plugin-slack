@@ -1,2 +1,3 @@
 /usr/lib/*/libaccounts-plugins/*.so
 /usr/lib/*/libaccounts-plugins/xml/*.glade
+/usr/share/icons/hicolor/48x48/hildon/*
